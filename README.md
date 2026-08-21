@@ -69,12 +69,26 @@ The contamination rate (expected proportion of anomalies) is configurable via th
 
 ## SQL Analysis
 
-`Analysis.sql` contains the queries run against the loaded `"Sales Orders"` table to answer core business questions:
+[`Analysis.sql`](Analysis.sql) contains the queries run against the loaded `"Sales Orders"` table to answer core business questions:
 
 - **Overall summary** — total orders, unique customers, units sold, revenue, profit, margin %, and average order value
 - **Monthly trend** — orders, revenue, profit, and margin by month
 - **Category performance** — revenue and margin by category, with a ranking of each on both dimensions
 - **Regional breakdown** — revenue, profit, and margin by region
+
+Example — overall summary query:
+
+```sql
+SELECT
+    COUNT(*) AS total_orders,
+    COUNT(DISTINCT customer_name) AS unique_customers,
+    SUM(quantity) AS units_sold,
+    ROUND(SUM(revenue)::numeric, 2) AS total_revenue,
+    ROUND(SUM(profit)::numeric, 2) AS total_profit,
+    ROUND((SUM(profit) / SUM(revenue) * 100)::numeric, 2) AS profit_margin_pct,
+    ROUND((SUM(revenue) / COUNT(*))::numeric, 2) AS avg_order_value
+FROM "Sales Orders";
+```
 
 ## Dashboard
 
