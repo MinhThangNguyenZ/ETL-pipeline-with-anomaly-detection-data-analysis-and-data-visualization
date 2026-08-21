@@ -1,6 +1,6 @@
 # ETL Pipeline with Anomaly Detection, Data Analysis & Visualization
 
-An end-to-end ETL pipeline that ingests raw product sales data, cleans and transforms it, flags anomalous orders using machine learning, and loads the result into PostgreSQL for downstream analysis in Power BI.
+An end-to-end ETL pipeline that ingests raw product sales data, cleans and transforms it, flags anomalous orders using machine learning, and loads the result into PostgreSQL for SQL analysis and downstream analysis in Power BI.
 
 ## Overview
 
@@ -18,6 +18,7 @@ This project simulates a real-world sales data pipeline:
 
 - **Python** — pandas, NumPy, scikit-learn, SQLAlchemy
 - **PostgreSQL** — storage for the cleaned, scored dataset
+- **SQL** — sql analysis for finding insights 
 - **Power BI** — dashboard and reporting layer
 - **Kaggle API** — dataset ingestion
 
