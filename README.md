@@ -11,7 +11,8 @@ This project simulates a real-world sales data pipeline:
 3. **Transform** — clean, type-cast, deduplicate, and engineer features
 4. **Detect** — flag anomalous orders with an Isolation Forest model
 5. **Load** — upsert the cleaned, scored data into PostgreSQL
-6. **Visualize** — explore trends and flagged anomalies in a Power BI dashboard
+6. **Analyze** — run the queries in `Analysis.sql` against the loaded data to answer business questions
+7. **Visualize** — explore trends and flagged anomalies in a Power BI dashboard
 
 ## Tech Stack
 
@@ -27,7 +28,10 @@ This project simulates a real-world sales data pipeline:
 ├── ingest.ipynb          # Pulls the raw dataset from Kaggle into ./data
 ├── sales.py              # Main ETL script: extract, transform, load
 ├── ml_anomalies.py       # Isolation Forest anomaly detection
+├── Analysis.sql          # SQL queries used for reporting/analysis
 ├── data/                 # Raw dataset (not tracked in git)
+├── assets/
+│   └── dashboard.png     # Power BI dashboard screenshot
 ├── .env.example          # Template for required environment variables
 └── .gitignore
 ```
@@ -63,6 +67,17 @@ The contamination rate (expected proportion of anomalies) is configurable via th
 
 [Product Sales Dataset 2023–2024](https://www.kaggle.com/datasets/yashyennewar/product-sales-dataset-2023-2024) via Kaggle.
 
+## SQL Analysis
+
+`Analysis.sql` contains the queries run against the loaded `"Sales Orders"` table to answer core business questions:
+
+- **Overall summary** — total orders, unique customers, units sold, revenue, profit, margin %, and average order value
+- **Monthly trend** — orders, revenue, profit, and margin by month
+- **Category performance** — revenue and margin by category, with a ranking of each on both dimensions
+- **Regional breakdown** — revenue, profit, and margin by region
+
 ## Dashboard
 
 Cleaned and scored data is loaded into PostgreSQL and visualized in a Power BI dashboard covering sales trends, regional performance, and flagged anomalies.
+
+![Dashboard](assets/dashboard.png)
