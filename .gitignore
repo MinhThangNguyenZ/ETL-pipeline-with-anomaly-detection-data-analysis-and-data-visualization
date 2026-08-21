@@ -1,0 +1,22 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*$py.class
+ 
+# Jupyter
+.ipynb_checkpoints/
+ 
+# Environment / secrets
+.env
+ 
+# Virtual environments
+venv/
+env/
+.venv/
+ 
+# OS junk
+.DS_Store
+Thumbs.db
+ 
+# Raw data (large / regeneratable via ingest.ipynb)
+data/*.csv
